@@ -22,12 +22,12 @@ export class GildedRose {
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       switch (this.items[i].name) {
+        // Update quality of Aged Brie item
         case 'Aged Brie':
-          // Update quality of Aged Brie item
           this.updateAgedBrie(this.items[i]);
           break;
+        // Update quality of Aged Brie item
         case 'Backstage passes to a TAFKAL80ETC concert':
-
           this.updateBackstagePasses(this.items[i]);
           break;
         // It does nothing for Sulfuras item

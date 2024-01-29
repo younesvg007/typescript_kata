@@ -10,6 +10,7 @@ export class Item {
   }
 }
 
+// GildedRose class manages the update of items in the store
 export class GildedRose {
   items: Array<Item>;
 
@@ -17,6 +18,7 @@ export class GildedRose {
     this.items = items;
   }
 
+  // Updates the quality of each item in the list
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       switch (this.items[i].name) {

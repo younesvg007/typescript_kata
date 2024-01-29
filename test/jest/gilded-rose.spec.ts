@@ -124,4 +124,26 @@ describe('Gilded Rose', () => {
     });
   });
   
+  // Tests for "Sulfuras" item
+  describe('Sulfuras', () => {
+    // Test: quality never changes
+    it('should never change quality', () => {
+      // Create a GildedRose instance with a "Sulfuras" item having a quality of 80
+      const gildedRose = new GildedRose([new Item('Sulfuras, Hand of Ragnaros', 10, 80)]);
+      // Update the quality of the item
+      const items = gildedRose.updateQuality();
+      // Check that the item's quality remains at 80 after the update
+      expect(items[0].quality).toBe(80);
+    });
+
+    // Test: sellIn value never changes
+    it('should never change sellIn value', () => {
+      // Create a GildedRose instance with a "Sulfuras" item having a sellIn date of 10 days
+      const gildedRose = new GildedRose([new Item('Sulfuras, Hand of Ragnaros', 10, 80)]);
+      // Update the quality of the item
+      const items = gildedRose.updateQuality();
+      // Check that the item's sellIn date remains at 10 days after the update
+      expect(items[0].sellIn).toBe(10);
+    });
+  });
 });

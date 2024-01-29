@@ -81,4 +81,47 @@ describe('Gilded Rose', () => {
     });
   });
 
+  // Tests for "Backstage passes" item
+  describe('Backstage passes', () => {
+    // Test: quality increases when sellIn > 10
+    it('should increase quality by 1 when sellIn > 10', () => {
+      // Create a GildedRose instance with a "Backstage passes" item having a sellIn date of more than 10 days and quality of 10
+      const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 11, 10)]);
+      // Update the quality of the item
+      const items = gildedRose.updateQuality();
+      // Check that the item's quality increased by 1 after the update
+      expect(items[0].quality).toBe(11);
+    });
+
+    // Test: quality increases when 10 >= sellIn > 5
+    it('should increase quality by 2 when 10 >= sellIn > 5', () => {
+      // Create a GildedRose instance with a "Backstage passes" item having a sellIn date between 6 and 10 days and quality of 10
+      const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 10, 10)]);
+      // Update the quality of the item
+      const items = gildedRose.updateQuality();
+      // Check that the item's quality increased by 2 after the update
+      expect(items[0].quality).toBe(12);
+    });
+
+    // Test: quality increases when 5 >= sellIn > 0
+    it('should increase quality by 3 when 5 >= sellIn > 0', () => {
+      // Create a GildedRose instance with a "Backstage passes" item having a sellIn date between 1 and 5 days and quality of 10
+      const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 5, 10)]);
+      // Update the quality of the item
+      const items = gildedRose.updateQuality();
+      // Check that the item's quality increased by 3 after the update
+      expect(items[0].quality).toBe(13);
+    });
+
+    // Test: quality drops to 0 after sellIn date
+    it('should drop quality to 0 after sellIn date', () => {
+      // Create a GildedRose instance with a "Backstage passes" item having an expired sellIn date (0 days) and quality of 10
+      const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 0, 10)]);
+      // Update the quality of the item
+      const items = gildedRose.updateQuality();
+      // Check that the item's quality is reduced to 0 after the update
+      expect(items[0].quality).toBe(0);
+    });
+  });
+  
 });

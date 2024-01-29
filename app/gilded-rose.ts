@@ -30,8 +30,9 @@ export class GildedRose {
         case 'Backstage passes to a TAFKAL80ETC concert':
           this.updateBackstagePasses(this.items[i]);
           break;
-        // It does nothing for Sulfuras item
+        // As "Sulfuras" is a legendary item, its quality is 80 and it never changes
         case 'Sulfuras, Hand of Ragnaros':
+          this.items[i].quality = 80 ;
           break;
         // Update quality of Conjured item
         case 'Conjured':
